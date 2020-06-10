@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    This can be done using the corner attribute. Look at the below xml.
+
+    <item>
+        <shape android:shape="rectangle" >
+            <stroke
+                android:height="5.0dip"
+                android:width="5.0dip"
+                android:color="#d4e157" />
+
+            <solid android:color="@color/colorAccent" />
+
+            <corners
+                android:bottomLeftRadius="102.0dip"
+                android:bottomRightRadius="102.0dip"
+                android:radius="102.0dip"
+                android:topLeftRadius="102.0dip"
+                android:topRightRadius="102.0dip" />
+        </shape>
+    </item>
+</selector>
