@@ -24,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
     }//@RequiresApi(api = Build.VERSION_CODES.P)
-//    public void showProgressDialog(View view){
-//        final ProgressDialog progressDialog=new ProgressDialog(this);
-//        progressDialog.setTitle("Progress Dialog");
-//        progressDialog.setMessage("please wait ...");
-//        //progressDialog.setCancelable(false);//always waiting
-//        long progress=3000L;//time waiting
+    public void showProgressDialog(View view){
+        final ProgressDialog progressDialog=new ProgressDialog(this);
+        progressDialog.setTitle("Progress Dialog");
+        progressDialog.setMessage("please wait ...");
+//        progressDialog.setCancelable(false);//always waiting
+        long progress=1000L;//time waiting
+        long secondProgress=500L;
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
@@ -37,17 +38,27 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //
 //        },progress);
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-//        new Timer().scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                if(progressDialog.getProgress()<progressDialog.getMax()){
-//                    progressDialog.incrementProgressBy(2);
-//                }
-//            }
-//        },0,progress);
-//        progressDialog.show();
-//    }
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                //if(progressDialog.getProgress()<progressDialog.getMax())
+                    progressDialog.incrementProgressBy(12);//har bar chand % por she
+                //else{progressDialog.dismiss();}
+            }
+        },0,progress);
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                if(progressDialog.getProgress()<progressDialog.getMax()){
+                    progressDialog.incrementSecondaryProgressBy(20);//on khati ke mige cheghadesh download shode!
+                }
+            }
+        },0,secondProgress);
+        progressDialog.show();
+    }
+
+
     public void showAlertDialog(View view){
         AlertDialog.Builder alertDialog =new AlertDialog.Builder(this);
         //type1
@@ -64,16 +75,16 @@ public class MainActivity extends AppCompatActivity {
 //                .setNeutralButton("cancel",null)//hich kar nemikone.samte chap miad
 //                .show();
         //type2
-        alertDialog.setCancelable(false)
-                .setTitle("Question")
-                .setSingleChoiceItems(new String[]{"A", "B", "C"}, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(MainActivity.this,"which: "+which,Toast.LENGTH_SHORT).show();
-                    }
-                })//checkeditem on itemie ke aval entekhab shode. -1 bedone difulte
-                .setPositiveButton("ok",null)
-                .show();
+//        alertDialog.setCancelable(false)
+//                .setTitle("Question")
+//                .setSingleChoiceItems(new String[]{"A", "B", "C"}, -1, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        Toast.makeText(MainActivity.this,"which: "+which,Toast.LENGTH_SHORT).show();
+//                    }
+//                })//checkeditem on itemie ke aval entekhab shode. -1 bedone difulte
+//                .setPositiveButton("ok",null)
+//                .show();
     }
 }
 
